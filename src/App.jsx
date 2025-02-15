@@ -1,26 +1,28 @@
-import { useState } from "react"
 
+import { useState } from 'react'
 
 const App = () => {
 
-let [counter, setCounter] = useState(15)
+let [count , setCount] = useState(0)
 
-  const addCount =()=>{
-    setCounter(counter+1)
-    console.log(counter)
-  }
+const addCount = ()=>{
+  if (count != 20)
+    {setCount(count+1)} 
+  else{count ==20}
+}
 
-  const remCount =()=>{
-    setCounter(counter-1)
-  }
+const remCount =()=>{
+  if(count != 0)
+    {setCount(count-1)}
+  else{count ==0} 
+}
 
   return (
-    <div>
-      <h1>Counter</h1>
-      <h2>counter value: {counter}</h2>
-      <button onClick={addCount} >Add Count</button>
-      <button onClick={remCount}>Remove Count</button>
-    </div>
+    <>
+      <div>Counter App {count}</div>
+      <button onClick={addCount}>Add</button>
+      <button onClick={remCount}>Remove</button>
+    </>
   )
 }
 

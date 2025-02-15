@@ -1,90 +1,27 @@
+import { useState } from "react"
 
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 const App = () => {
 
-const[data, setData]= useState([])
+let [counter, setCounter] = useState(15)
 
-useEffect(() => {
-  fetch("https://raw.githubusercontent.com/Vibencode-Solutions/mock-api/refs/heads/main/api.json")
-  .then((response)=> response.json())
-  .then((data)=>setData(data))
-  .catch((error)=> console.log(error))
-}, []);
+  const addCount =()=>{
+    setCounter(counter+1)
+    console.log(counter)
+  }
 
-const childData=(nodes)=>{
-  return  nodes.map((node, index)=>(
-    <li key={index}>
-      {node.name}
-      {node.child.length > 0 && <ul>{childData(node.child)}</ul>}
-    </li>
-  ));
-
-};
-
-
+  const remCount =()=>{
+    setCounter(counter-1)
+  }
 
   return (
     <div>
-      <ul>{childData(data)}</ul>
+      <h1>Counter</h1>
+      <h2>counter value: {counter}</h2>
+      <button onClick={addCount} >Add Count</button>
+      <button onClick={remCount}>Remove Count</button>
     </div>
   )
 }
 
 export default App
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
